@@ -28,6 +28,21 @@
          { title: 'Can you hear me now?', duration: '3:14' },
          { title: 'Wrong phone number', duration: '2:15'}
      ]
+	 };
+	 var myAlbum = {
+     title: 'My Jam',
+     artist: 'Azucena',
+     label: 'Hits',
+     year: '1978',
+     albumArtUrl: 'assets/images/album_covers/20.png',
+     songs: [
+         { title: 'Hello, Operator?', duration: '1:01' },
+         { title: 'Ring, ring, ring', duration: '5:01' },
+         { title: 'Fits in your pocket', duration: '3:21'},
+         { title: 'Can you hear me now?', duration: '3:14' },
+         { title: 'Wrong phone number', duration: '2:15'}
+     ]
+	 
  };
 
 var createSongRow = function(songNumber, songName, songLength) {
@@ -55,6 +70,13 @@ var setCurrentAlbum = function(album) {
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
+
+var setCurrentAlbum = function(album) {
+     
+  albumTitle.firstChild.nodeValue = album.title;
+  albumArtist.firstChild.nodeValue = album.artist;
+  albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
+  albumImage.setAttribute('src', album.albumArtUrl);
  
      // #3
      albumSongList.innerHTML = '';
@@ -67,6 +89,13 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+	 var albums = [albumPicasso, albumMacaroni, myAlbum];
+	 var index = 0;
+	 //This array stores the three albums
+	 albumImage.addEventListener("click", function(event)) {
+          setCurrentAlbum(albums[index]);
+	         index++;//I need help with this!!
+    });
  };
 
 
