@@ -34,7 +34,7 @@
      artist: 'Azucena',
      label: 'Hits',
      year: '1978',
-     albumArtUrl: 'assets/images/album_covers/20.png',
+     albumArtUrl: 'assets/images/album_covers/19.png',
      songs: [
          { title: 'Hello, Operator?', duration: '1:01' },
          { title: 'Ring, ring, ring', duration: '5:01' },
@@ -70,13 +70,6 @@ var setCurrentAlbum = function(album) {
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
-
-var setCurrentAlbum = function(album) {
-     
-  albumTitle.firstChild.nodeValue = album.title;
-  albumArtist.firstChild.nodeValue = album.artist;
-  albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
-  albumImage.setAttribute('src', album.albumArtUrl);
  
      // #3
      albumSongList.innerHTML = '';
@@ -88,14 +81,26 @@ var setCurrentAlbum = function(album) {
  };
  
  window.onload = function() {
-     setCurrentAlbum(albumPicasso);
-	 var albums = [albumPicasso, albumMacaroni, myAlbum];
+   setCurrentAlbum(albumPicasso);
+	 var albums = [albumPicasso, albumMarconi, myAlbum];
 	 var index = 0;
+	 
 	 //This array stores the three albums
-	 albumImage.addEventListener("click", function(event)) {
-          setCurrentAlbum(albums[index]);
-	         index++;//I need help with this!!
-    });
+	 var albumImage = document.getElementsByClassName('album-cover-art')[0];
+	 albumImage.addEventListener("click", function(event) {
+		 setCurrentAlbum(albums[index]);
+		 index++; //I need help with this!!
+		 index = index % 3;
+		 
+//		 index is equal to : we want
+//		 0 : 0 => 0 % 3 = 0
+//		 1 : 1 => 1 % 3 = 1
+//		 2 : 2 => 2 % 3 = 2
+//		 3 : 0 => 3 % 3 = 0
+//		 4 : 1 => 4 % 3 = 1
+//		 5 : 2 => 5 % 3 = 2
+		 
+   });
  };
 
 
